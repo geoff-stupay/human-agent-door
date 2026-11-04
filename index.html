@@ -8,11 +8,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Barlow:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: one dark presentation stage. Narration left, the person's agent app (phone) center, the merchant's agent browser right with the HUMAN Sightline console docked on it. Chapter pills on top, transport controls bottom. */
+/* Layout: HUMAN deck system — lavender field, purple assertion titles, full-width purple takeaway bar. Narration left, the person's agent app (phone) center, the merchant's agent browser right with the HUMAN Sightline console docked on it. Chapter pills on top, transport controls bottom. */
 :root{
-  color-scheme:dark;
-  --stage:#0E0C18; --stage-2:#15122A; --raise:#1C1833; --line:#2B2648; --line-2:#3A3360;
-  --ink:#F4F2FF; --muted:#A49EC6; --faint:#6E6893;
+  color-scheme:light;
+  --stage:#F6F4FF; --stage-2:#FFFFFF; --raise:#FFFFFF; --line:#E0E1EE; --line-2:#D4CFF0;
+  --ink:#1A1A1A; --muted:#4A4A6A; --faint:#6B7280; --deep:#1C1C2E;
   --purple:#6C47FF; --purple-deep:#5728DE; --lav:#EAE4FB; --lav-2:#F6F4FF;
   --ok:#22C55E; --warn:#F59E0B; --bad:#F04848;
   --paper:#FFFFFF; --paper-ink:#1A1A1A; --paper-muted:#6B7280; --paper-line:#E0E1EE; --paper-soft:#F8F8FC;
@@ -22,7 +22,7 @@
 }
 html,body{height:100%}
 body{background:var(--stage);color:var(--ink);font-family:var(--f-body);font-size:15px;
-  background-image:radial-gradient(900px 520px at 72% 42%,rgba(108,71,255,.16),transparent 65%),radial-gradient(700px 400px at 8% 90%,rgba(87,40,222,.10),transparent 70%);background-attachment:fixed;}
+}
 *{box-sizing:border-box}
 button{font:inherit;color:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--purple);outline-offset:2px}
@@ -34,14 +34,14 @@ button{font:inherit;color:inherit;cursor:pointer}
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .nav{display:flex;align-items:center;gap:4px;background:var(--stage-2);border:1px solid var(--line);border-radius:999px;padding:5px;flex-wrap:wrap;max-width:100%}
 .brand{display:flex;align-items:center;gap:8px;padding:0 12px 0 6px;font-family:var(--f-display);font-weight:700;font-size:16px;letter-spacing:.02em;white-space:nowrap;padding-left:10px;gap:10px}
-.brand .hlogo{height:20px;width:auto;aspect-ratio:480/111;color:#fff}
+.brand .hlogo{height:20px;width:auto;aspect-ratio:480/111;color:var(--ink)}
 .brand .div{width:1px;height:18px;background:var(--line-2)}
 .brand small{font-weight:600;color:var(--muted);font-size:14px;letter-spacing:0}
 .pill{border:0;background:transparent;border-radius:999px;padding:7px 14px;font-size:13.5px;color:var(--muted);display:flex;gap:8px;align-items:center;white-space:nowrap}
 .pill b{font-family:var(--f-mono);font-weight:400;font-size:11px;color:var(--faint)}
 .pill:hover{color:var(--ink)}
-.pill[aria-current="true"]{background:var(--ink);color:var(--stage)}
-.pill[aria-current="true"] b{color:var(--purple-deep)}
+.pill[aria-current="true"]{background:var(--purple-deep);color:#fff}
+.pill[aria-current="true"] b{color:#CFC3FF}
 
 /* ---------- stage ---------- */
 .stage{flex:1;display:grid;grid-template-columns:minmax(250px,330px) 300px minmax(0,1fr);gap:28px;align-items:center;max-width:1480px;width:100%;margin:0 auto}
@@ -51,16 +51,16 @@ button{font:inherit;color:inherit;cursor:pointer}
 .narr{min-width:0;align-self:center}
 .eyebrow{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);margin-bottom:14px}
 .eyebrow::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--purple)}
-.narr h1{font-family:var(--f-display);font-weight:700;font-size:clamp(28px,3.1vw,42px);line-height:1.06;letter-spacing:-.02em;margin:0 0 16px;text-wrap:balance}
-.narr p{color:var(--muted);font-size:16px;line-height:1.55;margin:0;max-width:34ch}
+.narr h1{color:var(--purple-deep);font-family:var(--f-display);font-weight:700;font-size:clamp(28px,3.1vw,42px);line-height:1.06;letter-spacing:-.02em;margin:0 0 16px;text-wrap:balance}
+.narr p{color:var(--muted);font-size:16.5px;line-height:1.55;margin:0;max-width:34ch}
 .narr .count{margin-top:22px;font-family:var(--f-mono);font-size:11.5px;color:var(--faint);letter-spacing:.06em}
 .narr .anim{animation:rise .45s ease both}
 
 .phone-col,.browser-col{transition:opacity .35s ease,filter .35s ease,transform .35s ease;min-width:0}
-.stage[data-focus="phone"] .browser-col,.stage[data-focus="browser"] .phone-col{opacity:.32;filter:saturate(.4);transform:scale(.985)}
+.stage[data-focus="phone"] .browser-col,.stage[data-focus="browser"] .phone-col{opacity:.38;filter:saturate(.5);transform:scale(.985)}
 
 /* ---------- phone ---------- */
-.phone{width:300px;height:620px;border-radius:44px;background:#F6F6F7;color:#141414;border:9px solid #1E1B29;box-shadow:0 0 0 1px #3A3654,0 30px 80px rgba(0,0,0,.55);position:relative;overflow:hidden;display:flex;flex-direction:column;margin:0 auto;font-family:-apple-system,"SF Pro Text",system-ui,"Segoe UI",sans-serif}
+.phone{width:300px;height:620px;border-radius:44px;background:#F6F6F7;color:#141414;border:9px solid #1E1B29;box-shadow:0 0 0 1px #2A2740,0 24px 60px rgba(28,28,46,.22);position:relative;overflow:hidden;display:flex;flex-direction:column;margin:0 auto;font-family:-apple-system,"SF Pro Text",system-ui,"Segoe UI",sans-serif}
 .p-status{display:flex;justify-content:space-between;align-items:center;padding:11px 22px 2px;font-size:13px;font-weight:600;color:#000}
 .p-status .ic{display:flex;gap:4px;align-items:center}
 .p-head{position:relative;height:74px;display:flex;justify-content:space-between;align-items:flex-start;padding:6px 12px 0;flex:none}
@@ -117,14 +117,14 @@ button{font:inherit;color:inherit;cursor:pointer}
 
 /* ---------- browser ---------- */
 .browser-col{position:relative}
-.browser{background:var(--paper);color:var(--paper-ink);border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px var(--line-2),0 30px 80px rgba(0,0,0,.5);height:600px;display:flex;flex-direction:column}
-.b-chrome{display:flex;align-items:center;gap:10px;padding:9px 12px;background:#1B1828;color:var(--muted);font-size:12px}
-.b-dots{display:flex;gap:6px}.b-dots i{width:10px;height:10px;border-radius:50%;background:#3A3654}
-.b-tag{display:flex;align-items:center;gap:6px;background:#26223A;border-radius:6px;padding:3px 8px;white-space:nowrap}
+.browser{background:var(--paper);color:var(--paper-ink);border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px var(--line),0 24px 60px rgba(87,40,222,.12);height:600px;display:flex;flex-direction:column}
+.b-chrome{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--lav);color:var(--muted);font-size:12px}
+.b-dots{display:flex;gap:6px}.b-dots i{width:10px;height:10px;border-radius:50%;background:#CFC6F2}
+.b-tag{display:flex;align-items:center;gap:6px;background:#fff;color:var(--muted);border-radius:6px;padding:3px 8px;white-space:nowrap}
 .b-tag .muse{width:12px;height:12px}
-.b-url{flex:1;min-width:0;background:#110F1C;border-radius:6px;padding:4px 10px;font-family:var(--f-mono);font-size:11.5px;color:#C9C4E4;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.b-url{flex:1;min-width:0;background:#fff;border-radius:6px;padding:4px 10px;font-family:var(--f-mono);font-size:11.5px;color:var(--muted);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .b-live{display:flex;align-items:center;gap:6px;font-size:11px;white-space:nowrap;color:var(--muted)}
-.b-live .hmark{width:13px;height:13px;color:#fff}
+.b-live .hmark{width:13px;height:13px;color:var(--purple-deep)}
 .b-page{flex:1;position:relative;overflow:hidden;min-height:0}
 .b-page > .pg{position:absolute;inset:0;overflow:hidden;animation:fade .35s ease both}
 
@@ -194,6 +194,34 @@ button{font:inherit;color:inherit;cursor:pointer}
 .door-st.bad{color:#B91C1C;background:#FEE2E2}
 .door-card .by{font-size:10.5px;color:var(--paper-muted);margin-top:10px;font-family:var(--f-mono)}
 
+.hold{position:relative;overflow:hidden;border:2px solid #1A1A1A;border-radius:999px;height:48px;display:grid;place-items:center;font-weight:700;font-size:14px;margin:2px auto 12px;width:240px;max-width:100%;background:#fff}
+.hold .fill{position:absolute;inset:0 auto 0 0;width:0;background:#1A1A1A}
+.hold .lbl{position:relative;color:#fff;mix-blend-mode:difference}
+.hold.holding .fill{animation:holdfill 2.6s cubic-bezier(.4,0,.6,1) .3s forwards}
+.chal .door-card h3{font-size:20px}
+.chal .muse-cur{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:#3B3B46;background:#F1F1F4;border-radius:999px;padding:4px 10px 4px 5px}
+.chal .muse-cur .muse{width:16px;height:16px}
+@keyframes holdfill{to{width:100%}}
+.split{background:#F8F7FD;height:100%;padding:24px;display:flex;flex-direction:column;gap:16px;justify-content:center}
+.split .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.split .col{background:#fff;border:1px solid var(--paper-line);border-radius:14px;padding:16px 18px}
+.split .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:4px;padding:3px 7px;margin-bottom:8px}
+.split .tag.a{background:#FFEDD5;color:#9A3412}.split .tag.b{background:#FEE2E2;color:#B91C1C}
+.split h3{font-family:var(--f-display);font-size:19px;margin:0 0 8px;letter-spacing:-.01em}
+.split ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.6;color:#3B3B46}
+.split .res{margin-top:10px;font-size:12.5px;font-weight:600;color:#B91C1C}
+.bridge{background:var(--purple-deep);color:#fff;border-radius:14px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.bridge p{margin:0;font-family:var(--f-display);font-size:18px;font-weight:600;letter-spacing:-.01em}
+.bridge .stg{display:flex;gap:6px;flex-wrap:wrap}
+.bridge .stg span{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.16);border-radius:999px;padding:4px 9px}
+.cnone{color:#B91C1C!important}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.tile{display:flex;flex-direction:column;gap:4px;font-size:12.5px;line-height:1.35}
+.tile .art.sm{border-radius:10px;margin-bottom:4px}
+.tile .pr{font-family:var(--f-display);font-weight:700;font-size:15px;font-variant-numeric:tabular-nums}
+.tile .sl{color:var(--paper-muted);font-size:11.5px}
+.skel{background:#EEEEF3!important}
+.sk{display:block;height:10px;border-radius:4px;background:#EEEEF3}.sk.w1{width:90%}.sk.w2{width:55%}
 /* swarm */
 .swarm{padding:18px 20px}
 .swarm h2{font-family:var(--f-display);font-size:20px;margin:0 0 4px}
@@ -228,7 +256,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .stick i{width:20px;height:20px;border-radius:50%;background:var(--purple-deep);color:#fff;display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:700;flex:none;margin-top:1px}
 
 /* ---------- Sightline console panel ---------- */
-.panel{position:absolute;right:-18px;bottom:-22px;width:318px;background:var(--raise);border:1px solid var(--line-2);border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.6);overflow:hidden;animation:panelIn .45s cubic-bezier(.2,.8,.2,1) both;z-index:3}
+.panel{--raise:#1C1C2E;--line:#2E2B48;--line-2:#3B3762;--ink:#F4F2FF;--muted:#A9A4CC;--faint:#7C78A0;color:var(--ink);position:absolute;right:-18px;bottom:-22px;width:318px;background:var(--raise);border:1px solid var(--line-2);border-radius:14px;box-shadow:0 20px 50px rgba(28,28,46,.3);overflow:hidden;animation:panelIn .45s cubic-bezier(.2,.8,.2,1) both;z-index:3}
 .panel-h{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line);font-size:12px;font-weight:600}
 .panel-h .hmark{width:16px;height:16px;color:#fff}
 .panel-h .lv{margin-left:auto;font-family:var(--f-mono);font-size:10px;color:var(--faint);font-weight:400}
@@ -264,13 +292,17 @@ button{font:inherit;color:inherit;cursor:pointer}
 .prog button.cur::after{background:var(--purple);box-shadow:0 0 0 3px rgba(108,71,255,.3)}
 .trans{display:flex;align-items:center;gap:6px;background:var(--stage-2);border:1px solid var(--line);border-radius:999px;padding:5px}
 .trans button{width:38px;height:38px;border-radius:50%;border:0;background:transparent;display:grid;place-items:center;color:var(--muted)}
-.trans button:hover{color:var(--ink);background:var(--raise)}
-.trans button.next{background:var(--ink);color:var(--stage)}
+.trans button:hover{color:var(--purple-deep);background:var(--lav)}
+.trans button.next{background:var(--purple-deep);color:#fff}
 .trans button:disabled{opacity:.3;cursor:default}
 .trans .sep{width:1px;height:20px;background:var(--line);margin:0 4px}
 .trans svg{width:17px;height:17px}
 .keys{font-size:12px;color:var(--faint);text-align:center}
 .disc{font-size:11px;color:var(--faint);text-align:center}
+.take{max-width:1480px;width:100%;margin:0 auto;background:var(--purple-deep);color:#fff;border-radius:4px;padding:11px 20px;display:flex;align-items:center;gap:14px}
+.take .hmark{width:20px;height:20px;color:#fff}
+.take p{margin:0;font-family:var(--f-display);font-weight:700;font-size:17px;letter-spacing:-.01em;text-wrap:balance}
+.ctrl-row{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
 
 .hmark,.muse,.hlogo{display:inline-block;flex:none}
 .hmark{color:var(--purple-deep)}
@@ -303,12 +335,15 @@ button{font:inherit;color:inherit;cursor:pointer}
   .panel{position:relative;right:auto;bottom:auto;width:100%;margin-top:12px}
   .prod,.listing{grid-template-columns:1fr}
   .console{grid-template-columns:1fr;gap:12px;height:auto}
+  .split .cols{grid-template-columns:1fr}
+  .grid4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .split{height:auto}
   .wires{display:none}
   .b-page > .pg{position:relative}
   .b-page > .pg.con{min-height:470px}
   .door{padding-bottom:20px}
   .confirm{padding-bottom:40px}
-  .brand small,.keys{display:none}
+  .brand small{display:none}
   .b-tag{display:none}
 }
 </style>
@@ -339,6 +374,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     <section class="browser-col" id="bcol"><div class="browser" id="browser" aria-label="Muse's agent browser"></div></section>
   </main>
 
+  <div class="take" id="take" aria-live="polite"></div>
   <footer class="ctrl">
     <div class="prog" id="prog"></div>
     <div class="trans">
@@ -348,8 +384,7 @@ button{font:inherit;color:inherit;cursor:pointer}
       <span class="sep"></span>
       <button id="bFull" title="Full screen (F)" aria-label="Full screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
     </div>
-    <div class="keys">Arrow keys step through each scenario · 1–4 jumps between them</div>
-    <div class="disc">Illustrative demo. Merchant pages are generic mockups of design-partner scenarios.</div>
+    <div class="disc">HUMAN Confidential, 2026 · Illustrative demo; merchant pages are mockups · ← → to step, 1–5 to change scenario</div>
   </footer>
 </div>
 
@@ -381,6 +416,22 @@ const PAGES = {
     <div><span class="badge">Limited release · 1 per guest</span><h2>Starfall Builder Kit, 1,250 pieces</h2><div class="sub" style="color:var(--paper-muted);font-size:13px">Released today at 9:00 AM CT</div>
     <div class="price">$59.99</div><ul><li>Ages 9+</li><li>Ships in 2 days</li><li>Limit 1 per guest</li></ul>
     <span class="cta${o.locked?' dim':''}">Add to cart</span><div class="stock">${o.stock||214} left</div></div></div>`,
+  'pk-product': o => `${mhead('Target','<span>Ship to 75214</span><span>Account</span>')}
+    <div class="prod"><div class="art"><canvas data-art="packs" width="260" height="260"></canvas></div>
+    <div><span class="badge">${o.soldout?'Sold out':'High demand · limit 2'}</span><h2>Pokémon Trading Card Game Booster Bundle, 6 packs</h2><div class="sub" style="color:var(--paper-muted);font-size:13px">Trading cards · Ages 6+</div>
+    <div class="price">$26.99</div><ul><li>6 booster packs</li><li>Ships in 2 days</li><li>Limit 2 per guest</li></ul>
+    <span class="cta${o.locked||o.soldout?' dim':''}">${o.soldout?'Out of stock':'Add to cart'}</span><div class="stock">${o.soldout?'0 left':(o.stock||38)+' left'}</div></div></div>`,
+  'pk-search': o => {
+    const items=[['Elite Trainer Box · Prismatic Evolutions','$199.99','Sold by a Target Plus partner'],['Elite Trainer Box · Destined Rivals','$84.99','Sold by a Target Plus partner'],['Booster Bundle · 6 packs','$41.99','Sold by a Target Plus partner'],['Elite Trainer Box · Pitch Black','—','Out of stock']];
+    return `${mhead('Target','<span>Ship to 75214</span><span>Account</span>')}
+    <div class="pbody"><h2>Results for “pokemon elite trainer box”</h2><div class="sub">${o.blank?'Loading results…':'4 results · sorted by relevance'}</div>
+    <div class="grid4">${o.blank?[0,1,2,3].map(()=>`<div class="tile"><div class="art sm skel"></div><i class="sk w1"></i><i class="sk w2"></i></div>`).join(''):items.map((it,i)=>`<div class="tile"><div class="art sm"><canvas data-art="packs" width="160" height="160"></canvas></div><b>Pokémon TCG ${it[0]}</b><span class="pr">${it[1]}</span><span class="sl">${it[2]}</span></div>`).join('')}</div></div>`;},
+  'pk-done': o => `${mhead('Target','<span>Ship to 75214</span><span>Account</span>')}
+    <div class="confirm"><div class="ok"><svg viewBox="0 0 12 12"><use href="#ck"/></svg></div><h2>Ordered: 2 booster bundles</h2><p>$53.98 plus tax, arriving Thursday.</p><div class="ref cnone">agent: not identified · person: unknown · evidence: none</div></div>`,
+  'today-split': o => `<div class="split"><div class="cols">
+    <div class="col"><span class="tag a">Friction</span><h3>The person gets pulled in</h3><ul><li>Muse parks the task and asks Mark what to do about a check he never asked for</li><li>His choices: take over the browser himself, or tell Muse to beat it</li><li>To Mark, HUMAN is the thing in the way</li></ul><div class="res">Slower, worse shopping for a real customer</div></div>
+    <div class="col"><span class="tag b">Circumvention</span><h3>The agent goes around</h3><ul><li>Muse completes Press & Hold on its own</li><li>Scored as human: no agent, person or intent on record</li><li>A reseller’s bots take exactly the same route</li></ul><div class="res">HUMAN is invisible, with no evidence to show</div></div></div>
+    <div class="bridge"><p>Instead of a wall, a door:</p><span class="stg"><span>Detect</span><span>Ask</span><span>Consent</span><span>Verify</span><span>Judge</span></span></div></div>`,
   'tg-done': o => `${mhead('Target','<span>Ship to 75214</span><span>Account</span>')}${vbar('buy 1 item · ship to home')}
     <div class="confirm"><div class="ok"><svg viewBox="0 0 12 12"><use href="#ck"/></svg></div><h2>Ordered: 1 Starfall Builder Kit</h2><p>$59.99 plus tax, arriving Thursday. The $0 hold on Visa ••4417 was released after checkout.</p><div class="ref">order 7710-2291 · evidence ev_41be…0d3</div></div>`,
   'tg-swarm': o => `${mhead('Target','<span>Release traffic</span>')}
@@ -419,6 +470,11 @@ const PAGES = {
   }
 };
 
+function chalHTML(st){
+  const lbl = st==='holding' ? 'Press & Hold' : 'Press & Hold';
+  const who = st==='holding' ? `<span class="muse-cur">${MU}Muse is holding the button</span>` : `<span class="muse-cur">${MU}Muse is stuck here</span>`;
+  return `<div class="door chal"><div class="door-card">${H}<h3>Before we continue…</h3><p>Press & Hold to confirm you are a human (and not a bot).</p><div class="hold ${st}"><span class="fill"></span><span class="lbl">${lbl}</span></div>${who}<div class="by">HUMAN Bot Defender · reference 7f1c-22a9</div></div></div>`;
+}
 function doorHTML(st){
   const m={
     detect:['spin','Agent detected · Muse (Meta)'],
@@ -445,7 +501,7 @@ function panelHTML(p){
       <div class="vpill ${p.verdict}"><span>${p.verdict==='allow'?'Allow':'Block'} · ${p.vnote}</span><small>${p.ms} ms</small></div>`; break;
     case 'policy': body = rows(p.rows); break;
   }
-  return `<div class="panel" role="status"><div class="panel-h">${H}HUMAN Sightline · ${p.title||'Agent Door'}<span class="lv">${p.sess||'sess_4c1e·a09'}</span></div><div class="pipe">${pipe}</div><div class="panel-b">${body}</div></div>`;
+  return `<div class="panel" role="status"><div class="panel-h">${H}${p.head||('HUMAN Sightline · '+(p.title||'Agent Door'))}<span class="lv">${p.sess||'sess_4c1e·a09'}</span></div>${p.nopipe?'':`<div class="pipe">${pipe}</div>`}<div class="panel-b">${body}</div></div>`;
 }
 
 /* ---------------- phone ---------------- */
@@ -471,16 +527,41 @@ function sheetHTML(s){
 const intentCode = (lines)=>lines.map(([k,v])=>`<span class="k">${k}</span>: <span class="s">${v}</span>`).join('\n');
 
 const CH = [
-{ id:'walmart', label:'Walmart',
+{ id:'today', label:'Today', take:'A wall can’t tell a good agent from a bad one, so today HUMAN gets cut out either way.',
+  steps:[
+  {eyebrow:'Today · Muse', title:'Mark asks Muse to hunt for Pokémon cards.', body:'He wants Elite Trainer Boxes at retail price, not reseller markups. He asks Muse to check Walmart and Target.',
+   focus:'phone', msgs:[], typing:'Are there any Pokémon Elite Trainer Boxes fulfilled by Walmart at MSRP? Check Target too.', browser:{url:'about:blank', page:null}},
+  {eyebrow:'Today · Muse', title:'Muse checks Walmart, then heads to Target.', body:'It finds ten listings at Walmart, eight of them fulfilled by Walmart. Then it opens Target to compare.',
+   focus:'all', msgs:[{from:'time',t:'Today 3:41 PM'},{from:'me',t:'Are there any Pokémon Elite Trainer Boxes fulfilled by Walmart at MSRP? Check Target too.'},{from:'muse',t:'Yep, most of them. Eight of the ten I found are fulfilled by Walmart, which means Walmart handles shipping and returns. I’m checking Target now and will bring back what’s in stock there.'},{from:'sys',t:'Browsing target.com'}],
+   browser:{url:'www.target.com/s?searchTerm=pokemon+elite+trainer+box', page:'pk-search', blank:true}},
+  {eyebrow:'Today · HUMAN challenge', title:'Target shows our challenge before any results.', body:'Target is protected by HUMAN. Muse looks automated, so it gets Press & Hold, built to tell people from bots. Muse is a bot working for a real person, and the challenge has no way to know that.',
+   focus:'browser', browser:{url:'www.target.com/s?searchTerm=pokemon+elite+trainer+box', page:'pk-search', blank:true, chal:'idle'},
+   panel:{nopipe:true, head:'HUMAN Bot Defender · today', sess:'target.com', kind:'detect', rows:[['Visitor','Automated','y'],['Agent','Unknown'],['Person behind it','Unknown'],['Intent','Unknown'],['Response','Press & Hold challenge','y']]}},
+  {eyebrow:'Friction', title:'Muse parks the task and asks Mark what to do.', body:'Mark gets pulled into a bot check he never asked for. His only choices are to take over the browser and clear it himself, or tell his agent to beat it.',
+   focus:'phone', addMsgs:[{from:'muse',t:'Target’s site threw up a “press & hold” human-verification check before showing any results, so my check there is parked for now. Want me to try solving it and continue, or would you rather take over the browser and clear it yourself?',opts:['Try solving it','I’ll take over the browser']}],
+   browser:{url:'www.target.com/s?searchTerm=pokemon+elite+trainer+box', page:'pk-search', blank:true, chal:'idle'},
+   panel:{nopipe:true, head:'HUMAN Bot Defender · today', sess:'target.com', kind:'detect', rows:[['Visitor','Automated','y'],['Response','Press & Hold challenge','y'],['Status','Waiting','y']]}},
+  {eyebrow:'Circumvention', title:'Mark tells Muse to beat it.', body:'He doesn’t know or care what the check is for. He wants the cards, so he tells his agent to get past it, and Muse starts holding the button.',
+   focus:'all', addMsgs:[{from:'me',t:'You try and solve it'},{from:'muse',t:'On it, attempting the verification now and continuing the Target check after it clears. I’ll bring back what I find.'}],
+   browser:{url:'www.target.com/s?searchTerm=pokemon+elite+trainer+box', page:'pk-search', blank:true, chal:'holding'},
+   panel:{nopipe:true, head:'HUMAN Bot Defender · today', sess:'target.com', kind:'detect', rows:[['Visitor','Automated','y'],['Response','Press & Hold challenge','y'],['Status','Being solved…','y']]}},
+  {eyebrow:'Circumvention', title:'Muse beats our challenge. We learn nothing.', body:'The check clears and Muse gets the results. HUMAN never learned this was an agent, who sent it or what it was after. A reseller’s bots take exactly the same route.',
+   focus:'all', addMsgs:[{from:'muse',t:'Cleared it. Target has stock too, but everything is sold by Target Plus marketplace partners, not Target, so prices run higher. The same Elite Trainer Box is $199.99 there versus $157.99 fulfilled by Walmart.'}],
+   browser:{url:'www.target.com/s?searchTerm=pokemon+elite+trainer+box', page:'pk-search'},
+   panel:{nopipe:true, head:'HUMAN Bot Defender · today', sess:'target.com', kind:'detect', rows:[['Challenge','Passed','r'],['Scored as','Human','r'],['Agent','Unknown'],['Person behind it','Unknown'],['Intent','Unknown'],['Evidence for Target','None','r']]}},
+  {eyebrow:'Today', title:'Either way, HUMAN gets cut out.', body:'Friction pulls a real customer into a bot check. Circumvention makes our defense invisible and leaves no evidence. A wall can’t tell a good agent from a bad one. We need a door.',
+   focus:'browser', wide:true, browser:{url:'humansecurity.com · what happens today', page:'today-split'}},
+  ]},
+{ id:'walmart', label:'Walmart', take:'The merchant takes agent revenue without taking agent risk, and keeps the evidence.',
   steps:[
   {eyebrow:'Muse · grocery agent', title:'Mark asks his agent to restock.', body:'His usual list, ready for pickup Saturday. Muse will do the shopping on Walmart.',
    focus:'phone', msgs:[], typing:'Reorder my usual groceries from Walmart for Saturday pickup.', browser:{url:'about:blank', page:null}},
   {eyebrow:'Muse · agent browser', title:'Muse gets to work.', body:'It opens a cloud browser and builds the cart from Mark’s past orders. To the site, this looks like any other visitor.',
    focus:'browser', msgs:[{from:'time',t:'Today 7:12 AM'},{from:'me',t:'Reorder my usual groceries from Walmart for Saturday pickup.'},{from:'muse',t:'On it. I’ll rebuild your usual list and pick a Saturday morning slot.'},{from:'sys',t:'Browsing walmart.com'}],
    browser:{url:'www.walmart.com/cart/reorder', page:'wm-cart'}},
-  {eyebrow:'Detect · Sightline', title:'Today, Muse walks through the wall.', body:'Personal agents pass our CAPTCHA and carry on. Walmart learns nothing about who sent them or why. So Sightline opens a door instead of showing a puzzle.',
+  {eyebrow:'Detect · Sightline', title:'This time, Sightline opens a door.', body:'Sightline sees Muse, operated by Meta, before checkout. Instead of a Press & Hold it can’t learn anything from, the agent gets the Agent Door.',
    focus:'browser', browser:{url:'www.walmart.com/checkout', page:'wm-cart', locked:true, door:'detect'},
-   panel:{stage:0, kind:'detect', rows:[['Visitor','AI agent · Muse','y'],['Operator','Meta'],['Browser','Headless Chromium 128'],['Network','Agent egress · us-east'],['CAPTCHA today','Passed · learned nothing','r'],['Decision','Open the door','g']]}},
+   panel:{stage:0, kind:'detect', rows:[['Visitor','AI agent · Muse','y'],['Operator','Meta'],['Browser','Headless Chromium 128'],['Network','Agent egress · us-east'],['Instead of','Press & Hold'],['Decision','Open the door','g']]}},
   {eyebrow:'Ask · MCP connector', title:'The agent gets a question, not a puzzle.', body:'Through HUMAN’s MCP connector, Muse states what it is here to do and answers what Walmart’s policy needs to know. The intent is bound to this session so it can be checked later.',
    focus:'browser', addMsgs:[{from:'sys',t:'walmart.com asked who I’m acting for'}], browser:{url:'www.walmart.com/checkout', page:'wm-cart', locked:true, door:'asking'},
    panel:{stage:1, kind:'intent', code:intentCode([['"agent"','"muse.meta"'],['"action"','"checkout"'],['"items"','14'],['"total"','"$86.42"'],['"fulfillment"','"pickup · Sat 10–11"'],['"policy_asks"','"wallet_attest"'],['"sig"','"es256:9f1c…"']])}},
@@ -499,7 +580,7 @@ const CH = [
    focus:'all', addMsgs:[{from:'muse',t:'Done. Your order is in for Saturday pickup.'},{from:'card',rows:[['Walmart · 14 items','$86.42'],['Pickup','Sat 10–11 AM'],['Verified by','HUMAN']]}],
    browser:{url:'www.walmart.com/order/confirmation', page:'wm-done'}},
   ]},
-{ id:'target', label:'Target',
+{ id:'target', label:'Target', take:'We catch bad agents on what they do, not on what they say.',
   steps:[
   {eyebrow:'Muse · shopping agent', title:'Mark wants the kit before it sells out.', body:'A limited release drops at 9:00 AM, one per guest. He asks Muse to grab one.',
    focus:'phone', msgs:[], typing:'Get me one Starfall Builder Kit from Target when it drops at 9.', browser:{url:'about:blank', page:null}},
@@ -525,7 +606,7 @@ const CH = [
    focus:'browser', browser:{url:'www.target.com/p/starfall-builder-kit', page:'tg-swarm', blocked:true},
    panel:{stage:4, kind:'policy', title:'Policy · target.com', sess:'v3', rows:[['Agents per person','1 on release SKUs'],['Verification','$0 hold, 1 per card / 24 h'],['Card rotation','Block at 3 cards','r'],['Evidence','Kept for disputes','g'],['Result today','1 allowed · 312 refused','g']]}},
   ]},
-{ id:'zillow', label:'Zillow',
+{ id:'zillow', label:'Zillow', take:'Same door, with verification set by each merchant’s policy, purchase or not.',
   steps:[
   {eyebrow:'Muse · home search', title:'Mark asks Muse to line up a tour.', body:'Four bedrooms near White Rock, under $650K, this Saturday.',
    focus:'phone', msgs:[], typing:'Find a 4-bedroom near White Rock under $650K and book a tour for Saturday.', browser:{url:'about:blank', page:null}},
@@ -542,7 +623,7 @@ const CH = [
    browser:{url:'www.zillow.com/tour/confirmation', page:'zl-done'},
    panel:{stage:4, kind:'judge', says:['Request tour','1 listing','Sat 11:30'], does:[['1 form submit',1],['1 session',1],['Person approved',1]], verdict:'allow', vnote:'verified lead', ms:29}},
   ]},
-{ id:'verdict', label:'One verdict', wide:true,
+{ id:'verdict', label:'One verdict', take:'Protocols decide how an agent transacts. HUMAN decides whether it should.', wide:true,
   steps:[
   {eyebrow:'The door’s output', title:'One verdict.', body:'Every protocol defines how an agent transacts. None decides whether it should. The door does: agent, person, intent, verification and behavior in one decision.',
    focus:'browser', browser:{url:'console.humansecurity.com/agent-door/verdicts', page:'console', view:'verdict'}},
@@ -578,12 +659,13 @@ function render(){
   const prev = prevKey.startsWith(ci+':') ? ch.steps[+prevKey.split(':')[1]] : null;
   prevKey=key;
   renderPills();
-  const stage=$('stage'); stage.dataset.focus=s.focus; stage.classList.toggle('wide',!!ch.wide);
+  const stage=$('stage'); stage.dataset.focus=s.focus; const wide=!!(ch.wide||s.wide); stage.classList.toggle('wide',wide);
 
+  $('take').innerHTML = `${H}<p>${ch.take}</p>`;
   $('narr').innerHTML = `<div class="anim"><div class="eyebrow">${s.eyebrow}</div><h1>${s.title}</h1><p>${s.body}</p><div class="count">${String(ci+1)} · ${ch.label.toUpperCase()} — STEP ${si+1} OF ${ch.steps.length}</div></div>`;
 
   // phone
-  if(!ch.wide){
+  if(!wide){
     const prevCount = prev && prev._msgs ? prev._msgs.length : 0;
     const msgs = s._msgs.map((m,i)=>msgHTML(m, i>=prevCount && prev && si>+0)).join('');
     const ico=(d)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
@@ -603,8 +685,8 @@ function render(){
   // browser
   const b=s.browser||{};
   const page = b.page ? PAGES[b.page](b) : `<div style="display:grid;place-items:center;height:100%;color:var(--paper-muted);font-size:13px;background:var(--paper-soft)">Muse hasn’t opened a site yet</div>`;
-  $('browser').innerHTML = `<div class="b-chrome"><span class="b-dots"><i></i><i></i><i></i></span>${ch.wide?`<span class="b-tag">HUMAN console</span>`:`<span class="b-tag">${MU}Muse is browsing</span>`}<span class="b-url">${b.url||'—'}</span><span class="b-live">${H}Protected by HUMAN</span></div>
-    <div class="b-page"><div class="pg${b.page==='console'?' con':''}">${page}${b.door?doorHTML(b.door):''}</div></div>`;
+  $('browser').innerHTML = `<div class="b-chrome"><span class="b-dots"><i></i><i></i><i></i></span>${wide?`<span class="b-tag">HUMAN</span>`:`<span class="b-tag">${MU}Muse is browsing</span>`}<span class="b-url">${b.url||'—'}</span><span class="b-live">${H}Protected by HUMAN</span></div>
+    <div class="b-page"><div class="pg${b.page==='console'?' con':''}">${page}${b.door?doorHTML(b.door):''}${b.chal?chalHTML(b.chal):''}</div></div>`;
   // panel
   const old=$('bcol').querySelector('.panel'); if(old) old.remove();
   if(s.panel) $('bcol').insertAdjacentHTML('beforeend', panelHTML(s.panel));
@@ -629,7 +711,7 @@ document.addEventListener('keydown',e=>{
   const k=e.key;
   if(k==='ArrowRight'||k===' '){e.preventDefault();next()}
   else if(k==='ArrowLeft'){e.preventDefault();prev()}
-  else if(/^[1-4]$/.test(k)) go(+k-1,0);
+  else if(/^[1-5]$/.test(k)) go(+k-1,0);
   else if(k==='r'||k==='R') go(ci,0);
   else if(k==='f'||k==='F') full();
 });
@@ -638,6 +720,16 @@ window.addEventListener('hashchange',fromHash);
 
 /* small generated product art for the kit (canvas, no external image) */
 function drawArt(){
+  document.querySelectorAll('canvas[data-art="packs"]').forEach(cv=>{
+    const x=cv.getContext('2d'),W=cv.width;x.clearRect(0,0,W,W);
+    const packs=[[-0.22,'#2B59C3','#7FB2FF'],[0,'#C2185B','#FF8FB8'],[0.22,'#E8A317','#FFE08A']];
+    packs.forEach(([a,c1,c2],i)=>{x.save();x.translate(W/2+(i-1)*52,W/2+8);x.rotate(a);
+      const g=x.createLinearGradient(-45,-80,45,80);g.addColorStop(0,c2);g.addColorStop(.5,c1);g.addColorStop(1,c2);
+      x.fillStyle=g;x.beginPath();x.roundRect?x.roundRect(-45,-80,90,160,8):x.rect(-45,-80,90,160);x.fill();
+      x.fillStyle='rgba(255,255,255,.55)';x.fillRect(-45,-80,90,10);x.fillRect(-45,70,90,10);
+      x.fillStyle='rgba(255,255,255,.9)';x.beginPath();for(let k=0;k<10;k++){const t=k*Math.PI/5-Math.PI/2,r=k%2?9:20;x.lineTo(Math.cos(t)*r,Math.sin(t)*r-6)}x.fill();
+      x.fillStyle='rgba(255,255,255,.85)';x.fillRect(-28,30,56,6);x.fillRect(-20,42,40,5);x.restore();});
+  });
   document.querySelectorAll('canvas[data-art="kit"]').forEach(cv=>{
     const x=cv.getContext('2d'),W=cv.width;x.clearRect(0,0,W,W);
     const cols=['#5728DE','#6C47FF','#F59E0B','#22C55E','#EAE4FB','#1C1C2E'];
